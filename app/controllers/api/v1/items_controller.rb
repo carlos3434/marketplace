@@ -1,7 +1,8 @@
 module Api
   module V1
     class ItemsController < ApplicationController
-      before_action :set_book, only: %i[update show destroy]
+      before_action :authenticate_request!
+      before_action :set_item, only: %i[update show destroy]
 
       # GET /items
       def index
@@ -11,7 +12,7 @@ module Api
 
       # POST /item
       def create
-        @item = Item.create(item_params)
+        @item = current_user!.items.create(item_params)
 
         if @item.save
           render json: ItemRepresenter.new(@item).as_json, status: :created
@@ -24,7 +25,6 @@ module Api
       def show
         render json: ItemRepresenter.new(@item).as_json
       end
-
 
       # PUT /items/:id
       def update
@@ -45,7 +45,7 @@ module Api
       end
 
       def set_item
-        @book = Item.find(params[:id])
+        @item = Item.find(params[:id])
       end
     end
   end

@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get :protected, to: 'visitors#protected'
-  root 'visitors#index'
-  #root to: ->(_) { [400, {}, ['']] }
-  #resources :messages, only: [:index]
   get 'users/Authentication'
   namespace :api do
     namespace :v1 do
