@@ -73,6 +73,12 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    devise (4.8.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     factory_bot (6.2.0)
@@ -82,6 +88,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
+    ffi (1.15.4)
     ffi (1.15.4-x64-mingw32)
     globalid (0.5.2)
       activesupport (>= 5.0)
@@ -105,6 +112,9 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.4-x64-mingw32)
       racc (~> 1.4)
+    nokogiri (1.12.4-x86_64-linux)
+      racc (~> 1.4)
+    orm_adapter (0.5.0)
     puma (5.4.0)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -143,6 +153,9 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -176,7 +189,8 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
-    wdm (0.1.1)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -184,12 +198,14 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner
+  devise
   factory_bot_rails (~> 6.1)
   faker
   hirb
@@ -203,10 +219,10 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.4)
   tzinfo-data
-  wdm (>= 0.1.0)
+  wdm
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.0.0p0
 
 BUNDLED WITH
    2.2.22
