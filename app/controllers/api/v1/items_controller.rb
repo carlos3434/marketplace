@@ -12,6 +12,7 @@ module Api
 
       # POST /item
       def create
+        #byebug
         @item = current_user!.items.create(item_params)
 
         if @item.save
@@ -41,7 +42,9 @@ module Api
       private
 
       def item_params
-        params.permit(:title, :author, :category_id, :user_id)
+        params.permit(
+          :name, :price, :brand, :warantine_time, :strength, :flavor, :size, :category_id, :user_id
+        )
       end
 
       def set_item

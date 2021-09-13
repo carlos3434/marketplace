@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/Authentication'
   namespace :api do
     namespace :v1 do
+      resources :users, only: %i[index]
       resources :categories, only: %i[index create destroy]
       resources :items, only: %i[index create show update destroy]
 

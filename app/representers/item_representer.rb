@@ -6,10 +6,14 @@ class ItemRepresenter
   def as_json
     {
       id: item.id,
-      title: item.title,
-      author: item.author,
-      category: Category.find(item.id).name,
-      date_added: item.created_at
+      name:item.name,
+      price: item.price,
+      brand: item.brand,
+      warantine_time: item.warantine_time,
+      strength: item.strength,
+      flavor: item.flavor,
+      size: item.size,
+      category: Category.find(item.id).name
     }
   end
 

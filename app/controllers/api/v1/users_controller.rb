@@ -1,6 +1,12 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_request!,  only: %i[index]
+      # GET /users
+      def index
+        @users = User.all
+        render json: UsersRepresenter.new(@users).as_json
+      end
 
       def create
         user = User.create(user_params)
