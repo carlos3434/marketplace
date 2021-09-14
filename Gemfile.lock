@@ -83,6 +83,7 @@ GEM
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.4)
+    ffi (1.15.4-x64-mingw32)
     globalid (0.5.2)
       activesupport (>= 5.0)
     hirb (0.7.3)
@@ -103,8 +104,11 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
+    nokogiri (1.12.4-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
+    pagy (3.11.0)
     pg (1.2.3)
     puma (5.4.0)
       nio4r (~> 2.0)
@@ -175,6 +179,8 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2021.1)
+      tzinfo (>= 1.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -194,6 +200,7 @@ DEPENDENCIES
   hirb
   jwt
   listen (~> 3.3)
+  pagy (~> 3.5)
   pg
   puma (~> 5.0)
   rack-cors

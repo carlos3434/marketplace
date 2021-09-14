@@ -6,7 +6,8 @@ module Api
 
       # GET /items
       def index
-        @items = Item.all
+        #@items = Item.all
+        @items = Item.limit( params[:limit] ).offset( params[:offset] )
         render json: ItemsRepresenter.new(@items).as_json
       end
 

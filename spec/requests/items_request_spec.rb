@@ -19,6 +19,63 @@ RSpec.describe 'Items', type: :request do
     end
   end
 
+  describe 'GET /items' do
+    before { get '/api/v1/items',params:{limit:1}, headers: { 'Authorization' => AuthenticationTokenService.call(user.id) } }
+
+    it 'returns items' do
+      expect(json).not_to be_empty
+    end
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'return a subset of items base on pagination' do
+
+      expect(json.size).to eq(1)
+
+      expect(json).to eq(
+        [
+          {
+            'id'=>1,
+            'name'=>'test',
+            'price'=>'test',
+            'brand'=>'test',
+            'warantine_time'=>'test',
+            'strength'=>'test',
+            'flavor'=>'test',
+            'size'=>'test',
+            'category'=>'Vapers'
+          }
+        ]
+      )
+    end
+
+    it 'return a subset of items base on pagination and offset' do
+      #before { 
+        get '/api/v1/items',params:{limit:1,offset:1}, headers: { 'Authorization' => AuthenticationTokenService.call(user.id) } 
+      #}
+
+      expect(json.size).to eq(1)
+
+      expect(json).to eq(
+        [
+          {
+            'id'=>2,
+            'name'=>'test',
+            'price'=>'test',
+            'brand'=>'test',
+            'warantine_time'=>'test',
+            'strength'=>'test',
+            'flavor'=>'test',
+            'size'=>'test',
+            'category'=>'Vapers'
+          }
+        ]
+      )
+    end
+  end
+
   describe 'GET /items/:id' do
     before { get "/api/v1/items/#{item_id}", headers: { 'Authorization' => AuthenticationTokenService.call(user.id) } }
 
